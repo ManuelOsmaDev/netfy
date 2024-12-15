@@ -10,6 +10,8 @@ import { LikesModule } from './likes/likes.module';
 import { PlaylistsModule } from './playlists/playlists.module';
 
 import {TypeOrmModule} from '@nestjs/typeorm'
+import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import {TypeOrmModule} from '@nestjs/typeorm'
       database:'netfy',
       autoLoadEntities:true,
       synchronize:true,
-      logging:['query', 'error']
+      //logging:['query', 'error']
     }),
     UsersModule, 
     ArtistModule, 
@@ -30,7 +32,7 @@ import {TypeOrmModule} from '@nestjs/typeorm'
     SongsModule, 
     SubscriptionsModule, 
     LikesModule, 
-    PlaylistsModule],
+    PlaylistsModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

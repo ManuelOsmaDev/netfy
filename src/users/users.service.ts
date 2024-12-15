@@ -32,6 +32,9 @@ export class UsersService {
           `El tipo de suscripción debe ser "free" o "premium".`,
         )
       }
+
+      console.log("pasword hashed user", createUserDto.password);
+      
       const createdUser = await this.userRepository.save(newUser)
       const response = {
         message: "Usuario creado con exito",
@@ -86,5 +89,9 @@ export class UsersService {
       message:"Usuario Eliminado con exito",
     }
 
+  }
+
+  findByEmail(email:string){
+    return this.userRepository.findOneBy({email})
   }
 }
